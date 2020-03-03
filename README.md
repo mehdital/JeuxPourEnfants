@@ -1,2 +1,2 @@
 # JeuxPourEnfants
-Logiciel avec interface graphique permettant de jouer a plusieurs jeux
+Logiciel JAVA avec interface graphique permettant de jouer à plusieurs jeux
