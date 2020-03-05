@@ -5,8 +5,7 @@ import containrs.Fenetre;
 public class MainClass {
 
     public static void main(String[] args) {
-        Calcul c = new Calcul();
-        c.AleaCalcul();
-
+ 
+        
     }
 }
