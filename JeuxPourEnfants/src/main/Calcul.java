@@ -13,6 +13,7 @@ public class Calcul {
 
     private int x;
     private int y;
+    private int resultat;
     private final int MIN = 1;
     private final int MAX = 10;
 
@@ -32,7 +33,15 @@ public class Calcul {
         this.y = y;
     }
 
-    public void AleaChiffre() {
+    public int getResultat() {
+        return resultat;
+    }
+
+    public void setResultat(int resultat) {
+        this.resultat = resultat;
+    }
+
+    public void aleaChiffre() {
 
         y = MIN + (int) (Math.random() * ((MAX - MIN) + 1));
 
@@ -42,22 +51,25 @@ public class Calcul {
 
     @Override
     public String toString() {
-        return "Calcul{" + "x=" + x + ", y=" + y + ", Min=" + MIN + ", Max=" + MAX + '}';
+        return "Calcul{" + "x=" + x + ", y=" + y + ", resultat=" + resultat + ", MIN=" + MIN + ", MAX=" + MAX + '}';
     }
 
-    public void AleaCalcul() {
+    public void aleaCalcul() {
         Calcul c = new Calcul();
-        c.AleaChiffre();
+        c.aleaChiffre();
+
         int alea = 1 + (int) (Math.random() * ((2 - 1) + 1));;
 
         if (alea == 1) {
+            setResultat(c.x + c.y);
             System.out.println(c.x + " + " + c.y + " = ");
         } else {
 
             while (c.x < c.y) {
-                c.AleaChiffre();
+                c.aleaChiffre();
 
             }
+            setResultat(c.x - c.y);
             System.out.println(c.x + " - " + c.y + " = ");
 
         }
