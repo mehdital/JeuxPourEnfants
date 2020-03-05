@@ -5,10 +5,12 @@
  */
 package containrs;
 
+import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,27 +21,25 @@ public class Fenetre extends JFrame {
     public Fenetre() {
         /**
          * Création de la fênetre principale
-         * 
+         *
          * Titre : Jeux d'enfant
          *
          */
-        JFrame f = new JFrame();
-        f.setTitle("Jeux d'enfant");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setResizable(true);
-        f.setSize(600, 600);
-        f.setVisible(true);
+        this.setTitle("Jeux d'enfant");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(true);
+        this.setSize(700, 700);
 
         /**
          * Création du Menu Bar
-         * 
+         *
          * Titre : Jeux d'enfant
          *
          */
         JMenuBar menuBar = new JMenuBar();
 
         JMenu menu = new JMenu("Activité");
-        menu.add(new JMenuItem("Déssin"));
+        menu.add(new JMenuItem("Dessin"));
         menu.add(new JMenuItem("Jeux de mots"));
         menu.add(new JMenuItem("Calcul"));
 
@@ -53,7 +53,19 @@ public class Fenetre extends JFrame {
         menuBar.add(menu2);
         menuBar.add(menu3);
 
-        f.setJMenuBar(menuBar);
+        initGUI();
+
+        this.setJMenuBar(menuBar);
+        this.setVisible(true);
+
+    }
+
+    private void initGUI() {
+        JPanel global = new JPanel();
+        GridLayout gl = new GridLayout();
+        global.setLayout(gl);
+        global.add(new FenetreCalcul());
+        this.add(global);
 
     }
 
