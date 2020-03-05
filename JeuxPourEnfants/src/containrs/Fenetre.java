@@ -5,10 +5,14 @@
  */
 package containrs;
 
+import java.awt.BorderLayout;
+import java.awt.PopupMenu;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,12 +21,13 @@ import javax.swing.JMenuItem;
 public class Fenetre extends JFrame {
 
     public Fenetre() {
-        JFrame f = new JFrame();
-        f.setTitle("Jeux d'enfant");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setResizable(true);
-        f.setSize(600, 600);
-        f.setVisible(true);
+        
+        this.setTitle("Jeux d'enfant");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(true);
+        this.setSize(600, 600);
+        this.setVisible(true);
+        
 
         JMenuBar menuBar = new JMenuBar();
 
@@ -41,7 +46,9 @@ public class Fenetre extends JFrame {
         menuBar.add(menu2);
         menuBar.add(menu3);
 
-        f.setJMenuBar(menuBar);
+        this.setJMenuBar(menuBar);
+       
+       
 
     }
 
