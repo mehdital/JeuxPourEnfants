@@ -10,12 +10,11 @@ package main;
  * @author Khalid <Khalid.Khalid at ldnr.fr>
  */
 public class Calcul {
-    private int x ; 
-    private int y ; 
-    private int MIN = 1 ; 
-    private int MAX = 10 ; 
 
-  
+    private int x;
+    private int y;
+    private final int MIN = 1;
+    private final int MAX = 10;
 
     public int getX() {
         return x;
@@ -32,40 +31,37 @@ public class Calcul {
     public void setY(int y) {
         this.y = y;
     }
-    
-    public void AleaChiffre(){
-       
-        y = MIN + (int)(Math.random() * ((MAX - MIN) + 1));
-       
-        x = MIN + (int)(Math.random() * ((MAX - MIN) + 1));
-      
+
+    public void AleaChiffre() {
+
+        y = MIN + (int) (Math.random() * ((MAX - MIN) + 1));
+
+        x = MIN + (int) (Math.random() * ((MAX - MIN) + 1));
+
     }
 
     @Override
     public String toString() {
         return "Calcul{" + "x=" + x + ", y=" + y + ", Min=" + MIN + ", Max=" + MAX + '}';
     }
-    
-    
-    public void Addition(){
-    Calcul c = new Calcul();
-    c.AleaChiffre();
-        System.out.println(c.x +" + " +c.y + " = ");
-    }
-    
-    public void Soustraction(){
-        Calcul c = new Calcul(); 
+
+    public void AleaCalcul() {
+        Calcul c = new Calcul();
         c.AleaChiffre();
-        while (c.x < c.y) {
-           c.AleaChiffre(); 
-            
+        int alea = 1 + (int) (Math.random() * ((2 - 1) + 1));;
+
+        if (alea == 1) {
+            System.out.println(c.x + " + " + c.y + " = ");
+        } else {
+
+            while (c.x < c.y) {
+                c.AleaChiffre();
+
+            }
+            System.out.println(c.x + " - " + c.y + " = ");
+
         }
-         System.out.println(c.x +" - " +c.y + " = ");
-            
-        
-        
+
     }
-    
-    
-    
+
 }
