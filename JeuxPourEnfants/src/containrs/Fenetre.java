@@ -17,6 +17,12 @@ import javax.swing.JMenuItem;
 public class Fenetre extends JFrame {
 
     public Fenetre() {
+        /**
+         * Création de la fênetre principale
+         * 
+         * Titre : Jeux d'enfant
+         *
+         */
         JFrame f = new JFrame();
         f.setTitle("Jeux d'enfant");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,6 +30,12 @@ public class Fenetre extends JFrame {
         f.setSize(600, 600);
         f.setVisible(true);
 
+        /**
+         * Création du Menu Bar
+         * 
+         * Titre : Jeux d'enfant
+         *
+         */
         JMenuBar menuBar = new JMenuBar();
 
         JMenu menu = new JMenu("Activité");
