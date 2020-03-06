@@ -17,7 +17,8 @@ public class ConnexionAdmin extends JFrame {
         // Creation Frame
         JFrame frame = new JFrame("Connexion administrateur");
         frame.setSize(350, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);//centrer la fenetre
+        frame.setResizable(false);//ne pas redimentionner
         JPanel panel = new JPanel();
         frame.add(panel);
         frame.setVisible(true);
