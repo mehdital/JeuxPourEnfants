@@ -5,7 +5,10 @@
  */
 package containrs;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -13,6 +16,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import main.Calcul;
+import javax.swing.*;
 
 /**
  *
@@ -29,6 +34,7 @@ public class Fenetre extends JFrame {
          */
         this.setTitle("Jeux d'enfant");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         this.setResizable(true);
         this.setSize(700, 700);
 
@@ -46,7 +52,7 @@ public class Fenetre extends JFrame {
         menuActivite.setMnemonic('A');
 
         //creation de l'item dessin
-        JMenuItem dessin = new JMenuItem("Déssin");
+        JMenuItem dessin = new JMenuItem("Dessin");
 
         // ajout du raccourci clavier Ctrl+ lettre
         dessin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,
@@ -66,6 +72,13 @@ public class Fenetre extends JFrame {
                 KeyEvent.CTRL_DOWN_MASK));
         menuActivite.add(calcul);
 
+        calcul.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+                Onglets o = new Onglets();
+            }
+        });
+
         JMenu menuLvl = new JMenu("Niveaux");
         // ajout du racourci clavier ALT+N
         menuLvl.setMnemonic('N');
@@ -80,30 +93,35 @@ public class Fenetre extends JFrame {
         menuLvl.add(lvl2);
 
         JMenu menuAdmin = new JMenu("Administration");
-        menuAdmin.add(new JMenuItem("Se connecter"));
+
+        JMenuItem connect = new JMenuItem("Se connecter");
+        menuAdmin.add(connect);
+
+        connect.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+                ConnexionAdmin c = new ConnexionAdmin();
+            }
+        });
 
         //ajout d'une ligne de sepatation entre les deux items (se connecter et modifier le mot de passe)
         menuAdmin.addSeparator();
-        menuAdmin.add(new JMenuItem("Modifier mot de passe"));
+
+        JMenuItem modifpass = new JMenuItem("Modifier mot de passe");
+        menuAdmin.add(modifpass);
+
+        modifpass.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+                ChangePassword c = new ChangePassword();
+            }
+        });
 
         menuBar.add(menuActivite);
         menuBar.add(menuLvl);
         menuBar.add(menuAdmin);
 
-        initGUI();
-
         this.setJMenuBar(menuBar);
         this.setVisible(true);
-
     }
-
-    private void initGUI() {
-        JPanel global = new JPanel();
-        GridLayout gl = new GridLayout();
-        global.setLayout(gl);
-        global.add(new FenetreCalcul());
-        this.add(global);
-
-    }
-
 }

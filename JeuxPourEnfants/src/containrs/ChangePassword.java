@@ -17,9 +17,8 @@ public class ChangePassword extends JFrame {
         // Creation Frame
         JFrame frame = new JFrame("Changer le mot de passe");
         frame.setSize(450, 250);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //centrer la fenetre
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(null);//centrer la fenetre
+        frame.setResizable(false);
         JPanel panel = new JPanel();
         frame.add(panel);
         frame.setVisible(true);
