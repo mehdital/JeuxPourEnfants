@@ -5,7 +5,9 @@
  */
 package containrs;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,11 +30,10 @@ public class FenetreCalcul extends JPanel {
     FlowLayout flCal = new FlowLayout();
     FlowLayout flSaisie = new FlowLayout();
     // pour afficher les boutons
-    GridLayout gl = new GridLayout(0, 3);
+    FlowLayout gl = new FlowLayout();
     JPanel Calcul = new JPanel();
 
-    JLabel calcul = new JLabel("Affichage");
-    JTextField jtfCal = new JTextField(30);
+    JLabel jtfCal = new JLabel();
 
     JPanel Saisie = new JPanel();
     JLabel saisie = new JLabel("Saisie");
@@ -46,9 +47,11 @@ public class FenetreCalcul extends JPanel {
         c = new Calcul();
 
         jtfCal.setText(c.toString());
-        Calcul.add(calcul);
+        jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
+        jtfCal.setForeground(Color.RED);
+
         Calcul.add(jtfCal);
-        jtfCal.setText("coucou");
+        jtfCal.setText(c.toString());
         jp.setLayout(flCal);
         jp.add(Calcul);
 
@@ -59,7 +62,6 @@ public class FenetreCalcul extends JPanel {
         jp.add(Saisie);
 
         //Ecouteurs de la saisie 
-        jtfSai.addActionListener(new MonEcouteurText());
         Saisie.setLayout(flSaisie);
 
         // pour afficher les boutons
@@ -93,7 +95,7 @@ public class FenetreCalcul extends JPanel {
         reponse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                jtfCal.setText(c.toString()+ " = " + c.getResultat().toString() + " Tu feras mieux la prochaine fois :)");
+                jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "");
 
             }
 
@@ -101,16 +103,21 @@ public class FenetreCalcul extends JPanel {
         verifie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                  if ((jtfSai.getText()).equals(c.getResultat().toString())){
 
-                if (!(jtfSai.getText()).equals(c.getResultat().toString())) {
-                     jtfCal.setText(c.toString()+"  : Ce n'est pas ça , Essaie encore!");
-                    
+                    jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "  : C'est ça , Bien joué!");
+
+                }else if ((jtfSai.getText()).equals("")) {
+                                         jtfCal.setText( "Saisie une solution!"+"->"
+                                                 +c.toString() + " = " + c.getResultat().toString()  );
 
                 } else {
 
-                      jtfCal.setText(c.toString()+ " = " + c.getResultat().toString() +"  : C'est ça , Bien joué!");
-
+                     jtfCal.setText(c.toString() + "  : Essaie encore!");
                 }
+              
+                
+              
 
             }
 
