@@ -48,6 +48,7 @@ public class FenetreCalcul extends JPanel {
         jtfCal.setText(c.toString());
         Calcul.add(calcul);
         Calcul.add(jtfCal);
+        jtfCal.setText("coucou");
         jp.setLayout(flCal);
         jp.add(Calcul);
 
