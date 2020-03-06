@@ -7,10 +7,13 @@ package containrs;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import main.Calcul;
 
 /**
  *
@@ -27,16 +30,22 @@ public class FenetreCalcul extends JPanel {
     // pour afficher les boutons
     GridLayout gl = new GridLayout(0, 3);
     JPanel Calcul = new JPanel();
+
     JLabel calcul = new JLabel("Affichage");
     JTextField jtfCal = new JTextField(30);
+
     JPanel Saisie = new JPanel();
     JLabel saisie = new JLabel("Saisie");
     JTextField jtfSai = new JTextField(30);
     JPanel bouton = new JPanel();
+    Calcul c;
 
     public FenetreCalcul() {
 
-        // pour l'affichage du calcul
+        // Creation et affichage du calcul
+        c = new Calcul();
+
+        jtfCal.setText(c.toString());
         Calcul.add(calcul);
         Calcul.add(jtfCal);
         jp.setLayout(flCal);
@@ -48,20 +57,70 @@ public class FenetreCalcul extends JPanel {
         jp.setLayout(flSaisie);
         jp.add(Saisie);
 
+        //Ecouteurs de la saisie 
+        jtfSai.addActionListener(new MonEcouteurText());
+        Saisie.setLayout(flSaisie);
+
         // pour afficher les boutons
         JButton reponse = new JButton("Réponse");
+
         JButton verifie = new JButton("Vérifier");
         JButton next = new JButton("Calcul suivant");
+
         bouton.add(reponse);
         bouton.add(verifie);
         bouton.add(next);
         bouton.setLayout(gl);
+
         jp.add(bouton);
+
+        bouton.add(next);
+        bouton.add(verifie);
+        bouton.add(reponse);
+
+        next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                c = new Calcul();
+                jtfCal.setText(c.toString());
+                jtfSai.setText("");
+
+            }
+        });
+
+        reponse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                jtfSai.setText(c.getResultat().toString());
+
+            }
+
+        });
+        verifie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                if (!(jtfSai.getText()).equals(c.getResultat().toString())) {
+
+                    jtfSai.setText("Essaie encore!");
+
+                } else {
+
+                    jtfSai.setText("Bravo bien joué!");
+
+                }
+
+            }
+
+        });
 
         // on ajoute le panel à notre panel
         jp.setLayout(global);
         this.setLayout(global);
         this.add(jp);
+
+        this.add(bouton);
 
     }
 
