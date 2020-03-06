@@ -15,7 +15,6 @@ public class Calcul {
 
     private int x;
     private int y;
-    private int resultat;
     private final String operande;
 
     public Calcul() {
@@ -24,13 +23,11 @@ public class Calcul {
         this.operande = aleaOperation();
         this.y = aleaY();
 
-        this.resultat = resultat();
-
     }
 
     @Override
     public String toString() {
-        return "Calcul{ " + x + operande + y + " = " + resultat + '}';
+        return   ""+x +" "+ operande +" "+ y+" "   ;
     }
 
     public int getX() {
@@ -49,12 +46,12 @@ public class Calcul {
         this.y = y;
     }
 
-    public int getResultat() {
-        return resultat;
-    }
-
-    public void setResultat(int resultat) {
-        this.resultat = resultat;
+    public Integer getResultat() {
+        if (operande.equals("+")) {
+            return x + y;
+        } else {
+            return x - y;
+        }
     }
 
     private int aleaChiffre() {
@@ -85,12 +82,8 @@ public class Calcul {
 
     }
 
-    private int resultat() {
-        if (operande.equals("+")) {
-            return x + y;
-        } else {
-            return x - y;
-        }
-    }
+    
+    
+
 
 }
