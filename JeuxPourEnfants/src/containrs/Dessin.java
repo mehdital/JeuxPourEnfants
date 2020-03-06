@@ -59,6 +59,8 @@ public class Dessin extends JPanel {
         this.add(label, BorderLayout.SOUTH);
 
         this.add(dessin, BorderLayout.CENTER);
+        
+        this.setPreferredSize(new Dimension(650, 650));
 
         //barre d'outil
         JToolBar jToolBar = new JToolBar();

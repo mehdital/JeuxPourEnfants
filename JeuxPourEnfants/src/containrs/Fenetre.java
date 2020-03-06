@@ -79,12 +79,20 @@ public class Fenetre extends JFrame {
         FenetreCalcul fc = new FenetreCalcul();
         onglet1.add(fc);
         onglet1.setPreferredSize(new Dimension(700, 700));
-        onglets.addTab("calcul", onglet1);
+        
+        
+        Dessin fd = new Dessin();
+         JPanel onglet2 = new JPanel();
+         onglet2.add(fd);
+        onglet2.setPreferredSize(new Dimension(700, 700));
+        
 
         onglets.setOpaque(true);
         pannel.add(onglets);
         this.getContentPane().add(pannel);
         this.setVisible(true);
+        onglets.addTab("calcul", onglet1);
+        onglets.addTab("Dessins", onglet2);
 
         JMenu menuLvl = new JMenu("Niveaux");
         // ajout du racourci clavier ALT+N
