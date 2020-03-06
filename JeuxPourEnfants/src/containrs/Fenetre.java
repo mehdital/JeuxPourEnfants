@@ -72,12 +72,19 @@ public class Fenetre extends JFrame {
                 KeyEvent.CTRL_DOWN_MASK));
         menuActivite.add(calcul);
 
-        calcul.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
-            @Override
-            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
-                Onglets o = new Onglets();
-            }
-        });
+        JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
+        JPanel pannel = new JPanel();
+
+        JPanel onglet1 = new JPanel();
+        FenetreCalcul fc = new FenetreCalcul();
+        onglet1.add(fc);
+        onglet1.setPreferredSize(new Dimension(700, 700));
+        onglets.addTab("calcul", onglet1);
+
+        onglets.setOpaque(true);
+        pannel.add(onglets);
+        this.getContentPane().add(pannel);
+        this.setVisible(true);
 
         JMenu menuLvl = new JMenu("Niveaux");
         // ajout du racourci clavier ALT+N

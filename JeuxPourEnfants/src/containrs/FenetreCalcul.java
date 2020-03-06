@@ -92,7 +92,7 @@ public class FenetreCalcul extends JPanel {
         reponse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                jtfSai.setText(c.getResultat().toString());
+                jtfCal.setText(c.toString()+ " = " + c.getResultat().toString() + " Tu feras mieux la prochaine fois :)");
 
             }
 
@@ -102,12 +102,12 @@ public class FenetreCalcul extends JPanel {
             public void actionPerformed(ActionEvent ae) {
 
                 if (!(jtfSai.getText()).equals(c.getResultat().toString())) {
-
-                    jtfSai.setText("Essaie encore!");
+                     jtfCal.setText(c.toString()+"  : Ce n'est pas ça , Essaie encore!");
+                    
 
                 } else {
 
-                    jtfSai.setText("Bravo bien joué!");
+                      jtfCal.setText(c.toString()+ " = " + c.getResultat().toString() +"  : C'est ça , Bien joué!");
 
                 }
 
