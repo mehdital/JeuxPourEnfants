@@ -91,7 +91,7 @@ public class Fenetre extends JFrame {
           JPanel onglet3 = new JPanel();
           FenetreCalcul2 fc2 = new FenetreCalcul2();
           onglet3.add(fc2);
-        onglet1.setPreferredSize(new Dimension(700, 700));
+        onglet3.setPreferredSize(new Dimension(700, 700));
         
         
 

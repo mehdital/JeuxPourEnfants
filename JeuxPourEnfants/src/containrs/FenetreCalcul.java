@@ -114,8 +114,8 @@ public class FenetreCalcul extends JPanel {
         jtfCal.setForeground(Color.GREEN);
 
                 }else if ((jtfSai.getText()).equals("")) {
-                                         jtfCal.setText( "Saisie une solution!"+"->"
-                                                 +c.toString() + " = " + c.getResultat().toString()  );
+                                         jtfCal.setText( "Saisie un résultat!"+"->"
+                                                 +c.toString() + " = " +"?" );
 
                 } else {
 
