@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import java.util.Random;
@@ -11,18 +6,18 @@ import java.util.Random;
  *
  * @author Khalid <Khalid.Khalid at ldnr.fr>
  */
-public class Calcul {
+public class Calcul2 {
 
     private int x;
     private int y;
     private final String operande;
     
 
-    public Calcul() {
+    public Calcul2() {
 
-        this.x = aleaChiffre();
-        this.operande = aleaOperation();
-        this.y = aleaY();
+        this.x = aleaChiffre2();
+        this.operande = aleaOperation2();
+        this.y = aleaY2();
 
     }
 
@@ -46,15 +41,6 @@ public class Calcul {
     public void setY(int y) {
         this.y = y;
     }
-
-    public Integer getResultat() {
-        if (operande.equals("+")) {
-            return x + y;
-        } else {
-            return x - y;
-        }
-    }
-    
     public Integer getResultat2() {
         if (operande.equals("+")) {
             return x + y;
@@ -66,41 +52,42 @@ public class Calcul {
             return x/y;
         } 
     }
-
-    private int aleaChiffre() {
+    
+     private int aleaChiffre2() {
         Random r = new Random();
-        int chiffre = (r.nextInt(10));
+        int chiffre = (r.nextInt(100));
         return chiffre;
     }
-    
      
-    
+     
+    private int aleaY2() {
 
-    private int aleaY() {
-
-       y=aleaChiffre();
+       y=aleaChiffre2();
         if ("-".equals(this.operande)) {
             while (y > x) {
-                this.y = aleaChiffre();
+                this.y = aleaChiffre2();
+            }
+        } if ("/".equals(this.operande)) {
+             while (y == 0 ) {
+                this.y = aleaChiffre2();
             }
         }
         return y;
     }
-    
-    private static String aleaOperation() {
+
+            private static String aleaOperation2() {
         Random r = new Random();
-        int chiffre = (r.nextInt(2));
+        int chiffre = (r.nextInt(4));
         if (chiffre == 1) {
             return "+";
-        } else {
+        }  if (chiffre == 2) {
             return "-";
+        }  if (chiffre == 3) {
+            return "x";
+        } else {
+            return "/";
         }
-    }
-
-    }
-
-    
-    
-
-
-
+        
+}
+            
+}
