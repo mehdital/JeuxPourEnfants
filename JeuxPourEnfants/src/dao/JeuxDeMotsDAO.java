@@ -21,6 +21,9 @@ public class JeuxDeMotsDAO implements Dao<JeuxDeMots> {
 
     private final String TABLE = "JeuxDeMots";
 
+    int id;
+    String question, reponse, niveau;
+
     @Override
     public JeuxDeMots getQuestion() {
         JeuxDeMots jdm = null;
