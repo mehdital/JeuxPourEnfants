@@ -7,7 +7,6 @@ package containrs;
 
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
@@ -18,8 +17,7 @@ import javax.swing.SwingConstants;
  */
 public class Onglets extends JFrame {
 
-    public Onglets() {
-        Fenetre f = new Fenetre();
+    public Onglets(Fenetre f) {
 
         JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
         JPanel pannel = new JPanel();
@@ -35,5 +33,4 @@ public class Onglets extends JFrame {
         f.getContentPane().add(pannel);
         f.setVisible(true);
     }
-
 }
