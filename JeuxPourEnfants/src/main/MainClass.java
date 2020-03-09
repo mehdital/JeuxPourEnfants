@@ -1,9 +1,7 @@
 package main;
 
-import containrs.ChangePassword;
-import containrs.ConnexionAdmin;
 import containrs.Fenetre;
-import containrs.FenetreCalcul;
+import containrs.Onglets;
 
 public class MainClass {
 
