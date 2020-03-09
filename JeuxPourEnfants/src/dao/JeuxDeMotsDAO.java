@@ -108,7 +108,7 @@ public class JeuxDeMotsDAO implements Dao<JeuxDeMots> {
                 String req = "SELECT * FROM JeuxDeMots WHERE niveau = 1 ORDER BY RAND() LIMIT 1";
                 PreparedStatement pstmt = CONNECTION.prepareStatement(req);
                 ResultSet result = pstmt.executeQuery();
-                while (result.first()) {
+                if (result.first()) {
                     jdm = new JeuxDeMots(
                             result.getInt("id"),
                             result.getString("question"),

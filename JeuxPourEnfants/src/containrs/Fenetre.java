@@ -76,37 +76,32 @@ public class Fenetre extends JFrame {
         JPanel pannel = new JPanel();
 
         JPanel onglet1 = new JPanel();
-         FenetreCalcul fc = new FenetreCalcul();
-   
+        FenetreCalcul fc = new FenetreCalcul();
         onglet1.add(fc);
         onglet1.setPreferredSize(new Dimension(700, 700));
-        
-        
-        Dessin fd = new Dessin();
-         JPanel onglet2 = new JPanel();
-         onglet2.add(fd);
-        onglet2.setPreferredSize(new Dimension(700, 700));
-        
-        
-          JPanel onglet3 = new JPanel();
-          FenetreCalcul2 fc2 = new FenetreCalcul2();
-          onglet3.add(fc2);
-        onglet3.setPreferredSize(new Dimension(700, 700));
-        
-        
 
+        Dessin fd = new Dessin();
+        JPanel onglet2 = new JPanel();
+        onglet2.add(fd);
+        onglet2.setPreferredSize(new Dimension(700, 700));
+
+        JPanel onglet3 = new JPanel();
+        FenetreCalcul2 fc2 = new FenetreCalcul2();
+        onglet3.add(fc2);
+        onglet3.setPreferredSize(new Dimension(700, 700));
+
+        JPanel onglet4 = new JPanel();
+        OngletJeuxDeMots ojdm = new OngletJeuxDeMots();
+        onglet4.add(ojdm);
+        onglet4.setPreferredSize(new Dimension(700, 700));
         onglets.setOpaque(true);
         pannel.add(onglets);
         this.getContentPane().add(pannel);
-        this.setVisible(true);
+
         onglets.addTab("calcul", onglet1);
         onglets.addTab("Dessins", onglet2);
-         onglets.addTab("Calcul2", onglet3);
-        
-        
-        
-        
-       
+        onglets.addTab("Calcul2", onglet3);
+        onglets.addTab("JeuxDeMots", onglet4);
 
         JMenu menuLvl = new JMenu("Niveaux");
         // ajout du racourci clavier ALT+N
