@@ -74,6 +74,7 @@ public final class SQLConnection {
                 Logger.getLogger(SQLConnection.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println("connecté");
         return connection;
     }
 }
