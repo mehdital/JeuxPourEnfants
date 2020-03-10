@@ -73,10 +73,8 @@ public class Fenetre extends JFrame {
         calcul.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,
                 KeyEvent.CTRL_DOWN_MASK));
         menuActivite.add(calcul);
-
         /**
          * création des onglets avec JTabbedPane.
-         *
          *
          */
         JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
@@ -124,6 +122,7 @@ public class Fenetre extends JFrame {
                 KeyEvent.CTRL_DOWN_MASK));
         menuLvl.add(lvl2);
 
+        //-------------------------Gestion evenementiel-------------------------
         calcul.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
             @Override
             public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
@@ -132,6 +131,11 @@ public class Fenetre extends JFrame {
 
             }
         });
+        /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur "calcul"
+         * dans le menu , permet de placer l'utilisateur sur le jeux calcul
+         */
+
         dessin.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
             @Override
             public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
@@ -140,15 +144,23 @@ public class Fenetre extends JFrame {
 
             }
         });
+        /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur "dessin"
+         * dans le menu , permet de placer l'utilisateur sur le jeux dessin
+         */
 
         jdm.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
             @Override
             public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
 
-                onglets.setSelectedComponent(onglet4);
+                onglets.setSelectedComponent(onglet3);
 
             }
         });
+        /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur "jeux de
+         * mot" dans le menu , permet de placer l'utilisateur sur le jeux de mot
+         */
 
         lvl1.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
             @Override
@@ -195,6 +207,10 @@ public class Fenetre extends JFrame {
             }
         });
 
+        /**
+         * Ces evenements de menus permettent de generer des nouvelles fenetres
+         * adaptées au niveau selctionné
+         */
         JMenu menuAdmin = new JMenu("Administration");
         JMenuItem connect = new JMenuItem("Se connecter");
         menuAdmin.add(connect);

@@ -10,10 +10,9 @@ import entity.JeuxDeMots;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
-import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.JFrame;
 
 /**
  * création d'un panel permettant l'affichage d'un onglet. le panel de la classe
@@ -33,9 +33,9 @@ import javax.swing.JTextField;
  *
  * @author alixia
  */
-public class OngletAdmin extends JPanel {
+public class OngletAdmin extends JFrame {
 
-    BoxLayout global = new BoxLayout(this, Y_AXIS);
+    GridLayout global = new GridLayout(5, 0);
 
     // pour afficher les blocs
     JPanel globalNiveau = new JPanel(new FlowLayout());
@@ -193,6 +193,9 @@ public class OngletAdmin extends JPanel {
         this.add(globalNiveau);
         this.add(bouton);
         this.setLayout(global);
+        this.setVisible(true);
+        this.setSize(950, 900);
+        this.setTitle("Gestion Administration");
 
     }
 
