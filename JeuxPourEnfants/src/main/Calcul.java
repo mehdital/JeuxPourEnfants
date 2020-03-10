@@ -39,7 +39,7 @@ public class Calcul {
         return "" + x + " " + operande + " " + y + " ";
     }
 
-    //-----------------------------Getteur/Setteur//-----------------------------
+    //-----------------------------Getteur/Setteur//----------------------------
     public int getX() {
         return x;
     }
@@ -56,7 +56,7 @@ public class Calcul {
         this.y = y;
     }
 
-    //------------------------------------------------Getteur Résultat ------------------------------------------------
+    //----------------------------Getteur Résultat ----------------------------
     public Integer getResultat() {
         if (operande.equals("+")) {
             return x + y;
@@ -64,26 +64,21 @@ public class Calcul {
             return x - y;
         }
     }
-
     /**
      * Le geteur du resultat qui permet de retourner le resultat de l'opération
      * en fonction de l'operande générée aléatoirement sous forme d'integer afin
      * de pouvoir l'afficher en string
-     *
-     *
      */
-
+    
     private int aleaChiffre() {
         Random r = new Random();
         int chiffre = (r.nextInt(10));
         return chiffre;
     }
-
     /**
      * Renvoies un int genere aleatoirement entre 0 et 10 avec la class Random
      *
      */
-
     private int aleaY() {
 
         y = aleaChiffre();
@@ -102,7 +97,6 @@ public class Calcul {
      * <Chiffre 2>
      *
      */
-
     private static String aleaOperation() {
         Random r = new Random();
         int chiffre = (r.nextInt(2));
@@ -115,7 +109,7 @@ public class Calcul {
     /**
      * Renvoies une string genere aleatoirement avec la class Random. Ainsi la
      * class random retourne 0 ou 1 Si 0 , la fonction retourne + : addition Si
-     * 1 , la fonction retourne - : soustraction 
+     * 1 , la fonction retourne - : soustraction
      *
      */
 

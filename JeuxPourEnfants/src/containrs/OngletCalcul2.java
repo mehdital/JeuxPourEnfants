@@ -32,11 +32,11 @@ public class OngletCalcul2 extends JPanel {
     // pour afficher les boutons
     FlowLayout gl = new FlowLayout();
     JPanel Calcul = new JPanel();
-    
+
     JPanel Info = new JPanel();
 
     JLabel jtfCal = new JLabel();
-    
+
     JLabel jtfinfo = new JLabel();
 
     JPanel Saisie = new JPanel();
@@ -49,16 +49,18 @@ public class OngletCalcul2 extends JPanel {
 
         // Creation et affichage du calcul
         c = new Calcul2();
+        
+        //Affichage d'un label pour informer l'utilisateur 
+        jtfinfo.setText("Le résultat de la division (÷) est à la décimale près (zero chiffre apres la virgule)");
+        Info.add(jtfinfo);
 
+        //Creation de l'affichage du calcul
         jtfCal.setText(c.toString());
         jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
         jtfCal.setForeground(Color.BLUE);
-
-        jtfinfo.setText("Le résultat de la division (÷) est à la décimale près (zero chiffre apres la virgule)");
-        Info.add(jtfinfo);
-        
         Calcul.add(jtfCal);
-        jtfCal.setText(c.toString());
+        
+       
         jp.setLayout(flCal);
         jp.add(Calcul);
 
@@ -67,19 +69,18 @@ public class OngletCalcul2 extends JPanel {
         Saisie.add(jtfSai);
         jp.setLayout(flSaisie);
         jp.add(Saisie);
-        
         jp.add(Info);
 
         //Ecouteurs de la saisie 
         Saisie.setLayout(flSaisie);
         Saisie.setFont(new Font("Courier New", Font.ITALIC, 35));
 
-        // pour afficher les boutons
+        //Pour afficher les boutons
         JButton reponse = new JButton("Réponse");
-
         JButton verifie = new JButton("Vérifier");
         JButton next = new JButton("Calcul suivant");
 
+        //Ajout des boutons
         bouton.add(reponse);
         bouton.add(verifie);
         bouton.add(next);
@@ -91,54 +92,57 @@ public class OngletCalcul2 extends JPanel {
         bouton.add(verifie);
         bouton.add(reponse);
 
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-
-                c = new Calcul2();
-                jtfCal.setText(c.toString());
-                jtfSai.setText("");
-                 jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-                jtfCal.setForeground(Color.BLUE);
-
-            }
+        //-------------------------Gestion evenementiel-------------------------
+        
+        next.addActionListener((ActionEvent ae) -> {
+            c = new Calcul2();
+            jtfCal.setText(c.toString());
+            jtfSai.setText("");
+            jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
+            jtfCal.setForeground(Color.BLUE);
         });
+        /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur 
+         * "question suivante", permet de generer un nouveau calcul et gestion de l'affichage 
+         * et on vide le champs de saisie pour pas induire l'utilisateur en erreur
+         */
 
-        reponse.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                jtfCal.setText(c.toString() + " = " + c.getResultat2().toString() + "");
+        reponse.addActionListener((ActionEvent ae) -> {
+            jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "");
+            jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
+            jtfCal.setForeground(Color.RED);
+        });
+         /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur 
+         * "réponse", permet d'afficher le résultat du calcul généré, gestion 
+         * de l'affichage
+         */
+        
+        verifie.addActionListener((ActionEvent ae) -> {
+            if ((jtfSai.getText()).equals(c.getResultat().toString())) {
+                
+                jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "  : C'est ça , Bien joué!");
+                jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
+                jtfCal.setForeground(Color.GREEN);
+                
+            } else if ((jtfSai.getText()).equals("")) {
+                jtfCal.setText("Saisie un résultat!" + "->"
+                        + c.toString() + " = " + "?");
+                jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
+                jtfCal.setForeground(Color.BLUE);
+                
+            } else {
+                
+                jtfCal.setText(c.toString() + "  : Essaie encore!");
                 jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
                 jtfCal.setForeground(Color.RED);
-
             }
-
         });
-        verifie.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                if ((jtfSai.getText()).equals(c.getResultat2().toString())) {
-
-                    jtfCal.setText(c.toString() + " = " + c.getResultat2().toString() + "  : C'est ça , Bien joué!");
-                    jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-                    jtfCal.setForeground(Color.GREEN);
-
-                } else if ((jtfSai.getText()).equals("")) {
-                    jtfCal.setText("Saisie un résultat!" + "->"
-                            + c.toString() + " = " + "?");
-                    jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-                    jtfCal.setForeground(Color.BLUE);
-
-                } else {
-
-                    jtfCal.setText(c.toString() + "  : Essaie encore!");
-                    jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-                    jtfCal.setForeground(Color.RED);
-                }
-
-            }
-
-        });
+         /**
+         *Gestion de l'événement quand l'utilisateur clic sur verifie. 
+         * Compare la saisie et le resultat
+         * si rien n'est saisie demande de saisie 
+         */
 
         // on ajoute le panel à notre panel
         jp.setLayout(global);

@@ -122,7 +122,9 @@ public class Fenetre extends JFrame {
                 KeyEvent.CTRL_DOWN_MASK));
         menuLvl.add(lvl2);
 
-        //-------------------------Gestion evenementiel-------------------------
+         //-------------------------Gestion evenementiel-------------------------
+         
+         
         calcul.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
             @Override
             public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
@@ -132,8 +134,8 @@ public class Fenetre extends JFrame {
             }
         });
         /**
-         * Cet évenement est déclanché quand l'utilisateur clic sur "calcul"
-         * dans le menu , permet de placer l'utilisateur sur le jeux calcul
+         * Cet évenement est déclanché quand l'utilisateur clic sur 
+         * "calcul" dans le menu , permet de placer l'utilisateur sur le jeux calcul
          */
 
         dessin.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
@@ -145,8 +147,8 @@ public class Fenetre extends JFrame {
             }
         });
         /**
-         * Cet évenement est déclanché quand l'utilisateur clic sur "dessin"
-         * dans le menu , permet de placer l'utilisateur sur le jeux dessin
+         * Cet évenement est déclanché quand l'utilisateur clic sur 
+         * "dessin" dans le menu , permet de placer l'utilisateur sur le jeux dessin
          */
 
         jdm.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
@@ -157,9 +159,10 @@ public class Fenetre extends JFrame {
 
             }
         });
-        /**
-         * Cet évenement est déclanché quand l'utilisateur clic sur "jeux de
-         * mot" dans le menu , permet de placer l'utilisateur sur le jeux de mot
+         /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur 
+         * "jeux de mot" dans le menu , permet de placer l'utilisateur sur le 
+         * jeux de mot
          */
 
         lvl1.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
@@ -206,6 +209,11 @@ public class Fenetre extends JFrame {
                 onglet3.add(ojdm);
             }
         });
+        
+        /**
+         * Ces evenements de menus permettent de generer des nouvelles fenetres 
+         * adaptées au niveau selctionné
+         */
 
         /**
          * Ces evenements de menus permettent de generer des nouvelles fenetres

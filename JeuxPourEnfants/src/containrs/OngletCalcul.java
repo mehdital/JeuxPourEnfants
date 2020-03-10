@@ -24,17 +24,20 @@ import main.Calcul;
 public class OngletCalcul extends JPanel {
 
     JPanel jp = new JPanel();
+    
+    //La forme global de l'onglet calcul
     GridLayout global = new GridLayout(3, 0);
 
     // pour afficher les textes
     FlowLayout flCal = new FlowLayout();
     FlowLayout flSaisie = new FlowLayout();
+    
     // pour afficher les boutons
     FlowLayout gl = new FlowLayout();
+    
+    //Creation des champs d'information et de saisie
     JPanel Calcul = new JPanel();
-
     JLabel jtfCal = new JLabel();
-
     JPanel Saisie = new JPanel();
     JLabel saisie = new JLabel("Saisie");
     JTextField jtfSai = new JTextField(10);
@@ -45,13 +48,11 @@ public class OngletCalcul extends JPanel {
 
         // Creation et affichage du calcul
         c = new Calcul();
-
+       
+        //Configueration et affichage du calcul et ajout dans la Jpanel global
         jtfCal.setText(c.toString());
         jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-        
-
-        Calcul.add(jtfCal);
-        jtfCal.setText(c.toString());
+        Calcul.add(jtfCal);jtfCal.setText(c.toString());
         jp.setLayout(flCal);
         jp.add(Calcul);
 
@@ -64,24 +65,21 @@ public class OngletCalcul extends JPanel {
         //Ecouteurs de la saisie 
         Saisie.setLayout(flSaisie);
         Saisie.setFont(new Font("Courier New", Font.ITALIC, 35));
-         jtfCal.setForeground(Color.BLUE);
+        jtfCal.setForeground(Color.BLUE);
 
         // pour afficher les boutons
         JButton reponse = new JButton("Réponse");
-
         JButton verifie = new JButton("Vérifier");
         JButton next = new JButton("Calcul suivant");
-
         bouton.add(reponse);
         bouton.add(verifie);
         bouton.add(next);
         bouton.setLayout(gl);
-
-        jp.add(bouton);
-
-        bouton.add(next);
+        jp.add(bouton);bouton.add(next);
         bouton.add(verifie);
         bouton.add(reponse);
+        
+        //-------------------------Gestion evenementiel-------------------------
 
         next.addActionListener(new ActionListener() {
             @Override
@@ -94,7 +92,12 @@ public class OngletCalcul extends JPanel {
 
             }
         });
-
+        /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur 
+         * "question suivante", permet de generer un nouveau calcul et gestion de l'affichage 
+         * et on vide le champs de saisie pour pas induire l'utilisateur en erreur
+         */
+        
         reponse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -105,6 +108,13 @@ public class OngletCalcul extends JPanel {
             }
 
         });
+        /**
+         * Cet évenement est déclanché quand l'utilisateur clic sur 
+         * "réponse", permet d'afficher le résultat du calcul généré, gestion 
+         * de l'affichage
+         */
+        
+        
         verifie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -129,12 +139,16 @@ public class OngletCalcul extends JPanel {
             }
 
         });
+        /**
+         *Gestion de l'événement quand l'utilisateur clic sur verifie. 
+         * Compare la saisie et le resultat
+         * si rien n'est saisie demande de saisie 
+         */
 
         // on ajoute le panel à notre panel
         jp.setLayout(global);
         this.setLayout(global);
         this.add(jp);
-
         this.add(bouton);
 
     }
