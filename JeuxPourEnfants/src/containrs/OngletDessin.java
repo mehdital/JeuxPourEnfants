@@ -63,7 +63,7 @@ public class OngletDessin extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(dessin, BorderLayout.CENTER);
 
-        this.setPreferredSize(new Dimension(700, 600));
+        this.setPreferredSize(new Dimension(725, 725));
 
 
         // ajout des boutons sur la barre d'outil
