@@ -23,10 +23,17 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
+ * création d'un panel permettant l'affichage d'un onglet. le panel de la classe
+ * contient un panel global qui contient plusieur panel ( blocs ).
+ *
+ * l'on crée des champs de texte et des boutons pour pouvoir: écrire une
+ * question, écrire une réponse, choisir le niveau, modifier, enregistrer.
+ *
+ * le tout connecté à la base de donnée.
  *
  * @author alixia
  */
-public class Admin extends JPanel {
+public class OngletAdmin extends JPanel {
 
     BoxLayout global = new BoxLayout(this, Y_AXIS);
 
@@ -65,7 +72,7 @@ public class Admin extends JPanel {
     JeuxDeMotsDAO jdao = new JeuxDeMotsDAO();
     OngletJeuxDeMots b = new OngletJeuxDeMots();
 
-    public Admin() {
+    public OngletAdmin() {
 
         // affichage texte niveau
         jlNiveau.setText("Choix du niveau des questions ");
@@ -126,7 +133,18 @@ public class Admin extends JPanel {
         bouton.add(enregistrer);
         bouton.add(modifier);
 
-        // action lors de la pression des boutons
+        /**
+         * action lors de la pression des boutons. Le bouton enregistrer,
+         * récupère la saisie des deux champs de texte. on vérifie le niveau
+         * séléctionné sur les boutons radio. Suivant celui séléctionné, le
+         * niveau ( String ) est modifier. on crée un nouveau jeux de mots.
+         *
+         * Le bouton modifier, récupère le choix sélectionné sur la comboBox. on
+         * écoute les boutons radio. On met des conditions si les champs textes
+         * sont vides, sinon cela remplace la question et la réponse par du
+         * vide. Et l'on modifie la question séléctionné.
+         *
+         */
         enregistrer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
