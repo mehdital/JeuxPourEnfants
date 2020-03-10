@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +21,10 @@ import java.util.logging.Logger;
 public class JeuxDeMotsDAO implements Dao<JeuxDeMots> {
 
     private final String TABLE = "JeuxDeMots";
+
+    int id;
+    String question, reponse, niveau;
+    public ArrayList<JeuxDeMots> jdm;
 
     @Override
     public JeuxDeMots getQuestion() {
@@ -163,6 +168,67 @@ public class JeuxDeMotsDAO implements Dao<JeuxDeMots> {
         } catch (SQLException ex) {
             Logger.getLogger(JeuxDeMots.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return jdm;
+    }
+
+    public JeuxDeMots find(String niveau) {
+        JeuxDeMots jdm = null;
+
+        if (niveau == "1") {
+            try {
+                String req = "SELECT * FROM " + TABLE + " WHERE niveau = 1 ORDER BY RAND() LIMIT 1 ";
+                PreparedStatement pstmt = CONNECTION.prepareStatement(req);
+                ResultSet result = pstmt.executeQuery();
+                if (result.first()) {
+                    jdm = new JeuxDeMots(
+                            id,
+                            result.getString("question"),
+                            result.getString("reponse"),
+                            result.getInt("niveau")
+                    );
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JeuxDeMots.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            if (niveau == "2") {
+                try {
+                    String req = "SELECT * FROM " + TABLE + " WHERE niveau = 2 ORDER BY RAND() LIMIT 2 ";
+                    PreparedStatement pstmt = CONNECTION.prepareStatement(req);
+                    ResultSet result = pstmt.executeQuery();
+                    if (result.first()) {
+                        jdm = new JeuxDeMots(
+                                id,
+                                result.getString("question"),
+                                result.getString("reponse"),
+                                result.getInt("niveau")
+                        );
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(JeuxDeMots.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        return jdm;
+    }
+
+    public ArrayList<JeuxDeMots> getAll() {
+
+        jdm = new ArrayList();
+        try {
+            String req = "SELECT * FROM JeuxDeMots ";
+            PreparedStatement pstmt = CONNECTION.prepareStatement(req);
+            ResultSet result = pstmt.executeQuery();
+
+            while (result.next()) {
+                jdm.add(new JeuxDeMots(result.getInt("id"), result.getString("question"), result.getString("reponse"), result.getInt("niveau")));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JeuxDeMotsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return jdm;
     }
 
