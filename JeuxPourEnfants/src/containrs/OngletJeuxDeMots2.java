@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  *
  * @author stag
  */
-public class OngletJeuxDeMots extends JPanel {
+public class OngletJeuxDeMots2 extends JPanel {
 
     JeuxDeMots question;
     int compt;
@@ -48,12 +48,12 @@ public class OngletJeuxDeMots extends JPanel {
     JeuxDeMotsDAO jdm;
 
     // mon contructeurs de JeuxDeMots
-    public OngletJeuxDeMots() {
+    public OngletJeuxDeMots2() {
 
         labelCompteur.setText(" Points  : " + compt);
         jdm = new JeuxDeMotsDAO();
         JeuxDeMots.add(jl);
-        question = jdm.getRandomByLevel(1);
+        question = jdm.getRandomByLevel(2);
         jl.setText(question.getQuestion());
         jp.setLayout(fl);
         jp.add(JeuxDeMots);
@@ -89,7 +89,7 @@ public class OngletJeuxDeMots extends JPanel {
             public void actionPerformed(ActionEvent ae) {
 
                 jdm = new JeuxDeMotsDAO();
-                question = jdm.getRandomByLevel(1);
+                question = jdm.getRandomByLevel(2);
                 jl.setText(question.getQuestion());
                 saisieTexte.setText("");
 

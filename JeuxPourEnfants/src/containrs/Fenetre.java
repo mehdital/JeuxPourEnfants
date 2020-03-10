@@ -91,7 +91,7 @@ public class Fenetre extends JFrame {
         onglet3.setPreferredSize(new Dimension(700, 700));
 
         JPanel onglet4 = new JPanel();
-        OngletJeuxDeMots ojdm = new OngletJeuxDeMots();
+        OngletJeuxDeMots2 ojdm = new OngletJeuxDeMots2();
         onglet4.add(ojdm);
         onglet4.setPreferredSize(new Dimension(700, 700));
 
