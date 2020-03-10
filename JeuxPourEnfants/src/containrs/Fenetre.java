@@ -25,6 +25,8 @@ import javax.swing.*;
  */
 public class Fenetre extends JFrame {
 
+    int lvl;
+
     public Fenetre() {
         /**
          * Création de la fênetre principale
@@ -86,29 +88,23 @@ public class Fenetre extends JFrame {
         onglet2.setPreferredSize(new Dimension(900, 900));
 
         JPanel onglet3 = new JPanel();
-        OngletCalcul2 fc2 = new OngletCalcul2();
-        onglet3.add(fc2);
+        OngletJeuxDeMots2 ojdm = new OngletJeuxDeMots2();
+        onglet3.add(ojdm);
         onglet3.setPreferredSize(new Dimension(900, 900));
 
         JPanel onglet4 = new JPanel();
-        OngletJeuxDeMots2 ojdm = new OngletJeuxDeMots2();
-        onglet4.add(ojdm);
+        OngletAdmin oa = new OngletAdmin();
+        onglet4.add(oa);
         onglet4.setPreferredSize(new Dimension(900, 900));
-
-        JPanel onglet5 = new JPanel();
-        Admin ad = new Admin();
-        onglet5.add(ad);
-        onglet5.setPreferredSize(new Dimension(900, 900));
 
         onglets.setOpaque(true);
         pannel.add(onglets);
         this.getContentPane().add(pannel);
 
-        onglets.addTab("calcul", onglet1);
-        onglets.addTab("Dessins", onglet2);
-        onglets.addTab("Calcul2", onglet3);
-        onglets.addTab("JeuxDeMots", onglet4);
-        onglets.addTab("Admin", onglet5);
+        onglets.addTab("Calcul", onglet1);
+        onglets.addTab("Dessin", onglet2);
+        onglets.addTab("JeuxDeMots", onglet3);
+        onglets.addTab("Admin", onglet4);
 
         JMenu menuLvl = new JMenu("Niveaux");
         // ajout du racourci clavier ALT+N
@@ -123,8 +119,78 @@ public class Fenetre extends JFrame {
                 KeyEvent.CTRL_DOWN_MASK));
         menuLvl.add(lvl2);
 
-        JMenu menuAdmin = new JMenu("Administration");
+        calcul.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
 
+                onglets.setSelectedComponent(onglet1);
+
+            }
+        });
+        dessin.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+
+                onglets.setSelectedComponent(onglet2);
+
+            }
+        });
+
+        jdm.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+
+                onglets.setSelectedComponent(onglet4);
+
+            }
+        });
+
+        lvl1.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+                lvl = 1;
+                onglet1.removeAll();
+                OngletCalcul fc = new OngletCalcul();
+
+                onglet1.add(fc);
+
+            }
+        });
+
+        lvl2.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+                lvl = 2;
+                onglet1.removeAll();
+                OngletCalcul2 fc2 = new OngletCalcul2();
+                onglet1.add(fc2);
+            }
+        });
+
+        lvl1.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+                lvl = 1;
+                onglet3.removeAll();
+                OngletJeuxDeMots ojdm = new OngletJeuxDeMots();
+
+                onglet3.add(ojdm);
+
+            }
+        });
+
+        lvl2.addActionListener(new ActionListener() { // classe anonyme interne implémentant ActionListener
+            @Override
+            public void actionPerformed(ActionEvent e) { // Action à effectuer quand survient l’évènement
+                lvl = 2;
+                onglet3.removeAll();
+                OngletJeuxDeMots2 ojdm = new OngletJeuxDeMots2();
+
+                onglet3.add(ojdm);
+            }
+        });
+
+        JMenu menuAdmin = new JMenu("Administration");
         JMenuItem connect = new JMenuItem("Se connecter");
         menuAdmin.add(connect);
 
