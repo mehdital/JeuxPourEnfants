@@ -23,6 +23,11 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 /**
+ * Classe dessin elle permet de dessiner avec un panel de couleur, et different
+ * taille de pinceau.
+ *
+ * Pour la taille du pinceau on utilise une string, cela permet de générer
+ * plusieur taille de pinceau. Pour dessiner on utilise la classe Graphics.
  *
  * @author alixia
  */
@@ -30,15 +35,17 @@ public class OngletDessin extends JPanel {
 
     JPanel dessin = new JPanel();
 
+    // création de la barre d'outil
     JToolBar jToolBar = new JToolBar();
 
     int x = 0, y = 0;
-    // ype utilise pour les conditions
+    // Type utilise pour les conditions
     String type = "point";
 
     private Color couleur = Color.BLACK;
     private JColorChooser chooser = new JColorChooser();
 
+    // création des boutons utilise à la barre d'outils
     JButton affichageCouleur = new JButton();
     JButton bouttonEffacer = new JButton("effacer");
     JButton bouttonCouleur = new JButton("couleur");
@@ -46,14 +53,20 @@ public class OngletDessin extends JPanel {
     JButton bouttonCarre = new JButton("carré");
     JButton bouttonTrait = new JButton("trait");
 
+    // création du graphic
     Graphics g;
 
     public OngletDessin() {
 
+        // parametre pour l'affichage du panel
+        // disposition sur la panel , dimension du dessin centrer sur le panel
         this.setLayout(new BorderLayout());
         this.add(dessin, BorderLayout.CENTER);
+
         this.setPreferredSize(new Dimension(700, 600));
 
+
+        // ajout des boutons sur la barre d'outil
         jToolBar.add(bouttonEffacer);
         jToolBar.add(bouttonCouleur);
         jToolBar.add(affichageCouleur);
@@ -61,7 +74,21 @@ public class OngletDessin extends JPanel {
         jToolBar.add(bouttonCarre);
         jToolBar.add(bouttonTrait);
 
+        // le panel dessin a un fond blanc
         dessin.setBackground(Color.white);
+
+        /**
+         * l'on met un écouteur sur le panel de la classe.
+         *
+         * On écoute le click de la souris, on écoute le mouvement de la souris.
+         * Si le type est égale au string initialisé via les boutons ( plus bas
+         * ).
+         *
+         * L'on dessine avec un ovale plein ou un carré plein l'abscisse et
+         * l'ordonnées sont à zéro pour que le point puisse démarrer du premier
+         * traçage de la souris.
+         *
+         */
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -71,10 +98,11 @@ public class OngletDessin extends JPanel {
                 if (type.equals("rond")) {
                     g.fillOval(x, y, 15, 15);
                 } else if (type.equals("carre")) {
-                    g.fillRect(x, y, 10, 10);
+                    g.fillRect(x, y, 5, 5);
                 }
             }
         });
+
         this.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -83,7 +111,7 @@ public class OngletDessin extends JPanel {
                 if (type.equals("rond")) {
                     g.fillOval(x, y, 15, 15);
                 } else if (type.equals("carre")) {
-                    g.fillRect(x, y, 10, 10);
+                    g.fillRect(x, y, 5, 5);
                 } else {
                     g.drawLine(x, y, e.getX(), e.getY());
 
@@ -92,8 +120,15 @@ public class OngletDessin extends JPanel {
                 y = e.getY();
             }
         });
+        /**
+         * mise en place de la palette de couleur, pour choisir la couleur du
+         * pinceau.
+         *
+         * couleur est de la classe Color. couleur est égale a la couleur choisi
+         * le bouton affichageCouleur contient la palette
+         *
+         */
 
-        //Choisir une couleur via JcolorChooser
         bouttonCouleur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -104,7 +139,13 @@ public class OngletDessin extends JPanel {
             }
         });
 
-        //Effacer la fenetre
+        /**
+         * Effacer la fenetre.
+         *
+         * On rénitialise la string a point pour avoir le tracer de base et on
+         * repaint pour rénitialiser le graphic.
+         *
+         */
         bouttonEffacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,7 +155,13 @@ public class OngletDessin extends JPanel {
             }
         });
 
-        // changement du pinceau
+        /**
+         * changement du pinceau.
+         *
+         * pour trait rond, carre, et classique on modifie simplement le string.
+         * Cela permet d'être utilisé dans les conditions des écouteurs de
+         * souris
+         */
         //trait rond
         bouttonRond.addActionListener(new ActionListener() {
             @Override
@@ -139,6 +186,7 @@ public class OngletDessin extends JPanel {
             }
         });
 
+        // position de la barre de menu en bas du panel
         this.add(jToolBar, BorderLayout.SOUTH);
 
     }

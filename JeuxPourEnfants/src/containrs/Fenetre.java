@@ -47,7 +47,7 @@ public class Fenetre extends JFrame {
          *
          */
         JMenuBar menuBar = new JMenuBar();
-        //ceration du menu activite
+        //création du menu activite
         JMenu menuActivite = new JMenu("Activité");
 
         // ajout du racourci clavier ALT+A
@@ -74,6 +74,11 @@ public class Fenetre extends JFrame {
                 KeyEvent.CTRL_DOWN_MASK));
         menuActivite.add(calcul);
 
+        /**
+         * création des onglets avec JTabbedPane.
+         *
+         *
+         */
         JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
         JPanel pannel = new JPanel();
 
@@ -201,7 +206,7 @@ public class Fenetre extends JFrame {
             }
         });
 
-        //ajout d'une ligne de sepatation entre les deux items (se connecter et modifier le mot de passe)
+        //ajout d'une ligne de separation entre les deux items (se connecter et modifier le mot de passe)
         menuAdmin.addSeparator();
 
         JMenuItem modifpass = new JMenuItem("Modifier mot de passe");
