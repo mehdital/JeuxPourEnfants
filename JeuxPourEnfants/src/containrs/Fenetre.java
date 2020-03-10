@@ -73,10 +73,8 @@ public class Fenetre extends JFrame {
         calcul.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,
                 KeyEvent.CTRL_DOWN_MASK));
         menuActivite.add(calcul);
-
         /**
          * création des onglets avec JTabbedPane.
-         *
          *
          */
         JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
