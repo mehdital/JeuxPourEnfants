@@ -36,7 +36,7 @@ public class Fenetre extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(true);
-        this.setSize(700, 700);
+        this.setSize(900, 900);
 
         /**
          * Création du Menu Bar
@@ -78,27 +78,27 @@ public class Fenetre extends JFrame {
         JPanel onglet1 = new JPanel();
         OngletCalcul fc = new OngletCalcul();
         onglet1.add(fc);
-        onglet1.setPreferredSize(new Dimension(700, 700));
+        onglet1.setPreferredSize(new Dimension(900, 900));
 
         OngletDessin fd = new OngletDessin();
         JPanel onglet2 = new JPanel();
         onglet2.add(fd);
-        onglet2.setPreferredSize(new Dimension(700, 700));
+        onglet2.setPreferredSize(new Dimension(900, 900));
 
         JPanel onglet3 = new JPanel();
         OngletCalcul2 fc2 = new OngletCalcul2();
         onglet3.add(fc2);
-        onglet3.setPreferredSize(new Dimension(700, 700));
+        onglet3.setPreferredSize(new Dimension(900, 900));
 
         JPanel onglet4 = new JPanel();
         OngletJeuxDeMots2 ojdm = new OngletJeuxDeMots2();
         onglet4.add(ojdm);
-        onglet4.setPreferredSize(new Dimension(700, 700));
+        onglet4.setPreferredSize(new Dimension(900, 900));
 
         JPanel onglet5 = new JPanel();
         Admin ad = new Admin();
         onglet5.add(ad);
-        onglet5.setPreferredSize(new Dimension(700, 700));
+        onglet5.setPreferredSize(new Dimension(900, 900));
 
         onglets.setOpaque(true);
         pannel.add(onglets);

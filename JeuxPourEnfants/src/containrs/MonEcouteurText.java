@@ -25,4 +25,5 @@ public class MonEcouteurText implements ActionListener {
         System.out.println(composant);
 
     }
+
 }
