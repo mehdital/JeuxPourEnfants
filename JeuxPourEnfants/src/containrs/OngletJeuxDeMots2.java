@@ -120,6 +120,7 @@ public class OngletJeuxDeMots2 extends JPanel {
                     jl.setForeground(Color.blue);
                     compt++;
                 }
+                labelCompteur.setText("Points :" + compt);
             }
 
         });
