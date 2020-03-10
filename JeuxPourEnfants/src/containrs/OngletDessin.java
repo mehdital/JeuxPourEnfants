@@ -26,7 +26,7 @@ import javax.swing.JToolBar;
  *
  * @author alixia
  */
-public class Dessin extends JPanel {
+public class OngletDessin extends JPanel {
 
     JPanel dessin = new JPanel();
 
@@ -48,7 +48,7 @@ public class Dessin extends JPanel {
 
     Graphics g;
 
-    public Dessin() {
+    public OngletDessin() {
 
         this.setLayout(new BorderLayout());
         this.add(dessin, BorderLayout.CENTER);

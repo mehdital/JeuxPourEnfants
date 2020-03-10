@@ -15,13 +15,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import main.Calcul2;
+import main.Calcul;
 
 /**
  *
  * @author alixia
  */
-public class FenetreCalcul2 extends JPanel {
+public class OngletCalcul extends JPanel {
 
     JPanel jp = new JPanel();
     GridLayout global = new GridLayout(3, 0);
@@ -39,12 +39,12 @@ public class FenetreCalcul2 extends JPanel {
     JLabel saisie = new JLabel("Saisie");
     JTextField jtfSai = new JTextField(10);
     JPanel bouton = new JPanel();
-    Calcul2 c;
+    Calcul c;
 
-    public FenetreCalcul2() {
+    public OngletCalcul() {
 
         // Creation et affichage du calcul
-        c = new Calcul2();
+        c = new Calcul();
 
         jtfCal.setText(c.toString());
         jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
@@ -87,7 +87,7 @@ public class FenetreCalcul2 extends JPanel {
             @Override
             public void actionPerformed(ActionEvent ae) {
 
-                c = new Calcul2();
+                c = new Calcul();
                 jtfCal.setText(c.toString());
                 jtfSai.setText("");
 
@@ -97,7 +97,7 @@ public class FenetreCalcul2 extends JPanel {
         reponse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                jtfCal.setText(c.toString() + " = " + c.getResultat2().toString() + "");
+                jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "");
                 jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
         jtfCal.setForeground(Color.RED);
 
@@ -107,15 +107,15 @@ public class FenetreCalcul2 extends JPanel {
         verifie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                  if ((jtfSai.getText()).equals(c.getResultat2().toString())){
+                  if ((jtfSai.getText()).equals(c.getResultat().toString())){
 
-                    jtfCal.setText(c.toString() + " = " + c.getResultat2().toString() + "  : C'est ça , Bien joué!");
+                    jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "  : C'est ça , Bien joué!");
                     jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
         jtfCal.setForeground(Color.GREEN);
 
                 }else if ((jtfSai.getText()).equals("")) {
                                          jtfCal.setText( "Saisie un résultat!"+"->"
-                                                 +c.toString() + " = " +"?"  );
+                                                 +c.toString() + " = " +"?" );
 
                 } else {
 

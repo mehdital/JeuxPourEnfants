@@ -23,7 +23,7 @@ public class Onglets extends JFrame {
         JPanel pannel = new JPanel();
 
         JPanel onglet1 = new JPanel();
-        FenetreCalcul fc = new FenetreCalcul();
+        OngletCalcul fc = new OngletCalcul();
         onglet1.add(fc);
         onglet1.setPreferredSize(new Dimension(700, 700));
         onglets.addTab("calcul", onglet1);

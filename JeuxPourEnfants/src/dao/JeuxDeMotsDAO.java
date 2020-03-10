@@ -174,14 +174,14 @@ public class JeuxDeMotsDAO implements Dao<JeuxDeMots> {
     public JeuxDeMots find(String niveau) {
         JeuxDeMots jdm = null;
 
-        if (niveau == "1") {
+        if ("1".equals(niveau)) {
             try {
                 String req = "SELECT * FROM " + TABLE + " WHERE niveau = 1 ORDER BY RAND() LIMIT 1 ";
                 PreparedStatement pstmt = CONNECTION.prepareStatement(req);
                 ResultSet result = pstmt.executeQuery();
                 if (result.first()) {
                     jdm = new JeuxDeMots(
-                            id,
+                            result.getInt("id"),
                             result.getString("question"),
                             result.getString("reponse"),
                             result.getInt("niveau")
@@ -191,14 +191,14 @@ public class JeuxDeMotsDAO implements Dao<JeuxDeMots> {
                 Logger.getLogger(JeuxDeMots.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            if (niveau == "2") {
+            if ("2".equals(niveau)) {
                 try {
-                    String req = "SELECT * FROM " + TABLE + " WHERE niveau = 2 ORDER BY RAND() LIMIT 2 ";
+                    String req = "SELECT * FROM " + TABLE + " WHERE  niveau = 2 ORDER BY RAND() LIMIT 2 ";
                     PreparedStatement pstmt = CONNECTION.prepareStatement(req);
                     ResultSet result = pstmt.executeQuery();
                     if (result.first()) {
                         jdm = new JeuxDeMots(
-                                id,
+                                result.getInt("id"),
                                 result.getString("question"),
                                 result.getString("reponse"),
                                 result.getInt("niveau")

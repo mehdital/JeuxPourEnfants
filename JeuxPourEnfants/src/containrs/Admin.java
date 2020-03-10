@@ -164,7 +164,6 @@ public class Admin extends JPanel {
 
                 for (JeuxDeMots jdm : jdao.getAll()) {
                     jdm = jdao.find("1");
-
                     System.out.println(jdm);
                 }
             }
