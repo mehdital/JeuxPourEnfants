@@ -17,6 +17,10 @@ public class JeuxDeMots {
     private String reponse;
     private int niveau;
 
+    public JeuxDeMots() {
+
+    }
+
     // mon constructeur
     public JeuxDeMots(int id_reponse, String question, String reponse, int niveau) {
         this.id = id_reponse;
