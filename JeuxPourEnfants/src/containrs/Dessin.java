@@ -14,11 +14,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import javax.sound.sampled.Control.Type;
 import javax.swing.JButton;
 
 import javax.swing.JColorChooser;
-
-import javax.swing.JLabel;
 
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
@@ -34,6 +33,8 @@ public class Dessin extends JPanel {
     JToolBar jToolBar = new JToolBar();
 
     int x = 0, y = 0;
+    // ype utilise pour les conditions
+    String type = "point";
 
     private Color couleur = Color.BLACK;
     private JColorChooser chooser = new JColorChooser();
@@ -41,9 +42,25 @@ public class Dessin extends JPanel {
     JButton affichageCouleur = new JButton();
     JButton bouttonEffacer = new JButton("effacer");
     JButton bouttonCouleur = new JButton("couleur");
-    //JButton bouttonForme = new JButton("forme");
+    JButton bouttonRond = new JButton("rond");
+    JButton bouttonCarre = new JButton("carré");
+    JButton bouttonTrait = new JButton("trait");
+
+    Graphics g;
 
     public Dessin() {
+
+        this.setLayout(new BorderLayout());
+        this.add(dessin, BorderLayout.CENTER);
+        this.setPreferredSize(new Dimension(600, 600));
+
+        jToolBar.add(bouttonEffacer);
+        jToolBar.add(bouttonCouleur);
+        jToolBar.add(affichageCouleur);
+        jToolBar.add(bouttonRond);
+        jToolBar.add(bouttonCarre);
+        jToolBar.add(bouttonTrait);
+
         dessin.setBackground(Color.white);
         this.addMouseListener(new MouseAdapter() {
             @Override
@@ -51,25 +68,32 @@ public class Dessin extends JPanel {
                 x = e.getX();
                 y = e.getY();
 
+                if (type.equals("rond")) {
+                    g.fillOval(x, y, 15, 15);
+                } else if (type.equals("carre")) {
+                    g.fillRect(x, y, 10, 10);
+                }
             }
         });
         this.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                Graphics g = dessin.getGraphics();
+                g = dessin.getGraphics();
                 g.setColor(couleur);
-                g.drawLine(x, y, e.getX(), e.getY());
+                if (type.equals("rond")) {
+                    g.fillOval(x, y, 15, 15);
+                } else if (type.equals("carre")) {
+                    g.fillRect(x, y, 10, 10);
+                } else {
+                    g.drawLine(x, y, e.getX(), e.getY());
+
+                }
                 x = e.getX();
                 y = e.getY();
-
             }
         });
 
-        this.setLayout(new BorderLayout());
-        this.add(dessin, BorderLayout.CENTER);
-
-        this.setPreferredSize(new Dimension(600, 600));
-
+        //Choisir une couleur via JcolorChooser
         bouttonCouleur.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -80,18 +104,40 @@ public class Dessin extends JPanel {
             }
         });
 
+        //Effacer la fenetre
         bouttonEffacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                type = "point";
                 repaint();
 
             }
         });
 
-        jToolBar.add(bouttonEffacer);
-        jToolBar.add(bouttonCouleur);
-        jToolBar.add(affichageCouleur);
-        // jToolBar.add(bouttonForme);
+        // changement du pinceau
+        //trait rond
+        bouttonRond.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                type = "rond";
+            }
+        });
+
+        //trait carre
+        bouttonCarre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                type = "carre";
+            }
+        });
+
+        // trait classique
+        bouttonTrait.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                type = "point";
+            }
+        });
 
         this.add(jToolBar, BorderLayout.SOUTH);
 

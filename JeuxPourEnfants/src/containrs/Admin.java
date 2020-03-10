@@ -167,7 +167,6 @@ public class Admin extends JPanel {
 
                     System.out.println(jdm);
                 }
-
             }
         });
 

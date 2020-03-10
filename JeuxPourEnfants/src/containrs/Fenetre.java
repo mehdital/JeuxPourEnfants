@@ -94,6 +94,12 @@ public class Fenetre extends JFrame {
         OngletJeuxDeMots ojdm = new OngletJeuxDeMots();
         onglet4.add(ojdm);
         onglet4.setPreferredSize(new Dimension(700, 700));
+
+        JPanel onglet5 = new JPanel();
+        Admin ad = new Admin();
+        onglet5.add(ad);
+        onglet5.setPreferredSize(new Dimension(700, 700));
+
         onglets.setOpaque(true);
         pannel.add(onglets);
         this.getContentPane().add(pannel);
@@ -102,6 +108,7 @@ public class Fenetre extends JFrame {
         onglets.addTab("Dessins", onglet2);
         onglets.addTab("Calcul2", onglet3);
         onglets.addTab("JeuxDeMots", onglet4);
+        onglets.addTab("Admin", onglet5);
 
         JMenu menuLvl = new JMenu("Niveaux");
         // ajout du racourci clavier ALT+N
