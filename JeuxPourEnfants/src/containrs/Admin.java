@@ -12,12 +12,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.lang.reflect.Array.set;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.ButtonGroup;
@@ -91,22 +85,15 @@ public class Admin extends JPanel {
         globalNiveau.add(boutonR);
 
         // affichage texte numero question
-        jlNumero.setText("Choix du numéro de la question");
+        jlNumero.setText("Choix de la question");
         jlNumero.setFont(new Font("Courier New", Font.ITALIC, 15));
         jlNumero.setForeground(Color.BLACK);
         jpNumero.add(jlNumero);
         globalNumero.add(jpNumero);
 
-        //remplir la combox avec le nbr de question
-        ArrayList<Integer> nbr = new ArrayList<Integer>();
-
-        for (int i = 1; i < 23; i++) {
-
-            nbr.add(i);
-        }
         // séléction numéro de question
-        JComboBox numero = new JComboBox(nbr.toArray());
-        boutonC.add(numero);
+        JComboBox selection = new JComboBox(jdao.getAll().toArray());
+        boutonC.add(selection);
         globalNumero.add(boutonC);
 
         // affichage texte niveau
@@ -143,53 +130,45 @@ public class Admin extends JPanel {
         enregistrer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                String enonce = jtfEnonce.getText();
+                String reponse = jtfReponse.getText();
+                Integer niveau = null;
+                int id = 0;
+                if (br.isSelected()) {
+                    niveau = 1;
+                } else if (br1.isSelected()) {
+                    niveau = 2;
+                }
+                jdao.create(new JeuxDeMots(id, enonce, reponse, niveau));
             }
 
         });
         modifier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-        });
-
-        // action lors des boutons radio
-        br.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String composant = ae.getActionCommand();
-                System.out.println(composant);
-
-                for (JeuxDeMots jdm : jdao.getAll()) {
-                    jdm = jdao.find("1");
-                    System.out.println(jdm);
+                JeuxDeMots jdm;
+                Integer niveau = null;
+                if (br.isSelected()) {
+                    niveau = 1;
+                } else if (br1.isSelected()) {
+                    niveau = 2;
                 }
-            }
-        });
-
-        br1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String composant = ae.getActionCommand();
-                System.out.println(composant);
-
-                for (JeuxDeMots jdm : jdao.getAll()) {
-                    jdm = jdao.find("2");
-                    System.out.println(jdm);
+                jdm = (JeuxDeMots) selection.getSelectedItem();
+                if (niveau != null) {
+                    jdm.setNiveau(niveau);
                 }
+                if (!jtfEnonce.getText().equals("")) {
+                    jdm.setQuestion(jtfEnonce.getText());
+                }
+                if (!jtfReponse.getText().equals("")) {
+                    jdm.setReponse(jtfReponse.getText());
+                }
+                jdao.update(jdm);
+                System.out.println(jdao);
             }
+
         });
 
-//        AbstractAction detailsAction = new AbstractAction() {
-//
-//            public void actionPerformed(ActionEvent pE) {
-//                this.setVisible(!true);
-//
-//            }
-//
-//        };
         this.add(globalNumero);
         this.add(globalTexte);
         this.add(globalTexte1);
