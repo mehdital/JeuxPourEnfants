@@ -52,7 +52,7 @@ public class OngletDessin extends JPanel {
 
         this.setLayout(new BorderLayout());
         this.add(dessin, BorderLayout.CENTER);
-        this.setPreferredSize(new Dimension(600, 600));
+        this.setPreferredSize(new Dimension(700, 600));
 
         jToolBar.add(bouttonEffacer);
         jToolBar.add(bouttonCouleur);

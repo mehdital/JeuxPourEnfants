@@ -48,7 +48,7 @@ public class OngletCalcul extends JPanel {
 
         jtfCal.setText(c.toString());
         jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-        jtfCal.setForeground(Color.BLUE);
+        
 
         Calcul.add(jtfCal);
         jtfCal.setText(c.toString());
@@ -60,11 +60,11 @@ public class OngletCalcul extends JPanel {
         Saisie.add(jtfSai);
         jp.setLayout(flSaisie);
         jp.add(Saisie);
-        
 
         //Ecouteurs de la saisie 
         Saisie.setLayout(flSaisie);
         Saisie.setFont(new Font("Courier New", Font.ITALIC, 35));
+         jtfCal.setForeground(Color.BLUE);
 
         // pour afficher les boutons
         JButton reponse = new JButton("Réponse");
@@ -90,6 +90,7 @@ public class OngletCalcul extends JPanel {
                 c = new Calcul();
                 jtfCal.setText(c.toString());
                 jtfSai.setText("");
+                jtfCal.setForeground(Color.BLUE);
 
             }
         });
@@ -99,7 +100,7 @@ public class OngletCalcul extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "");
                 jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-        jtfCal.setForeground(Color.RED);
+                jtfCal.setForeground(Color.RED);
 
             }
 
@@ -107,25 +108,23 @@ public class OngletCalcul extends JPanel {
         verifie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                  if ((jtfSai.getText()).equals(c.getResultat().toString())){
+                if ((jtfSai.getText()).equals(c.getResultat().toString())) {
 
                     jtfCal.setText(c.toString() + " = " + c.getResultat().toString() + "  : C'est ça , Bien joué!");
                     jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-        jtfCal.setForeground(Color.GREEN);
+                    jtfCal.setForeground(Color.GREEN);
 
-                }else if ((jtfSai.getText()).equals("")) {
-                                         jtfCal.setText( "Saisie un résultat!"+"->"
-                                                 +c.toString() + " = " +"?" );
+                } else if ((jtfSai.getText()).equals("")) {
+                    jtfCal.setText("Saisie un résultat!" + "->"
+                            + c.toString() + " = " + "?");
+                    jtfCal.setForeground(Color.BLUE);
 
                 } else {
 
-                     jtfCal.setText(c.toString() + "  : Essaie encore!");
-                       jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
-        jtfCal.setForeground(Color.RED);
+                    jtfCal.setText(c.toString() + "  : Essaie encore!");
+                    jtfCal.setFont(new Font("Courier New", Font.ITALIC, 35));
+                    jtfCal.setForeground(Color.RED);
                 }
-              
-                
-              
 
             }
 

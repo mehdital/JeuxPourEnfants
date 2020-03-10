@@ -1,9 +1,19 @@
 package main;
 
+import static java.lang.Integer.divideUnsigned;
 import java.util.Random;
 
 /**
+ *Class Calcul2
  *
+ * Elle permet de generer aléatoirement un calcul sous forme de <Chiffre 1>
+ * <Operande> <Chriffre 2><=><resultat>
+ *
+ * Il s'agit de calcul de niveau 2, elle doit pouvoir generer des additions,
+ * soustractions , des multiplications et des divisions. Les nombres doivent être constitué de
+ * chiffres pouvant allés jusqu'a 3 (0 à 999).
+ * De plus , pour les soustractions résultat ne doit pas être negatif et le cas
+ * impossible de la division doit être traité.
  * @author Khalid <Khalid.Khalid at ldnr.fr>
  */
 public class Calcul2 {
@@ -23,7 +33,7 @@ public class Calcul2 {
 
     @Override
     public String toString() {
-        return   ""+x +" "+ operande +" "+ y+" "   ;
+        return   " "+x+" "+ operande +" "+y+" "   ;
     }
 
     public int getX() {
@@ -46,16 +56,16 @@ public class Calcul2 {
             return x + y;
         } if(operande.equals("-")) {
             return x - y;
-        } if (operande.equals("*")) {
+        } if (operande.equals("x")) {
             return x*y;
         }  else  {
-            return x/y;
+            return divideUnsigned(x, y);
         } 
     }
     
      private int aleaChiffre2() {
         Random r = new Random();
-        int chiffre = (r.nextInt(100));
+        int chiffre = (r.nextInt(1000));
         return chiffre;
     }
      
@@ -67,7 +77,7 @@ public class Calcul2 {
             while (y > x) {
                 this.y = aleaChiffre2();
             }
-        } if ("/".equals(this.operande)) {
+        } if ("÷".equals(this.operande)) {
              while (y == 0 ) {
                 this.y = aleaChiffre2();
             }
@@ -85,7 +95,7 @@ public class Calcul2 {
         }  if (chiffre == 3) {
             return "x";
         } else {
-            return "/";
+            return "÷";
         }
         
 }

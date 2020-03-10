@@ -26,7 +26,7 @@ import javax.swing.JTextField;
  *
  * @author alixia
  */
-public class Admin extends JPanel {
+public class OngletAdmin extends JPanel {
 
     BoxLayout global = new BoxLayout(this, Y_AXIS);
 
@@ -65,7 +65,7 @@ public class Admin extends JPanel {
     JeuxDeMotsDAO jdao = new JeuxDeMotsDAO();
     OngletJeuxDeMots b = new OngletJeuxDeMots();
 
-    public Admin() {
+    public OngletAdmin() {
 
         // affichage texte niveau
         jlNiveau.setText("Choix du niveau des questions ");
